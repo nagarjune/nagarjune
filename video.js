@@ -1,6 +1,14 @@
-.booth {
-width:400px;
-background:#ccc;
-border:10px solid #ddd;
-margin: 0 auto;
-}
+(function() {
+ var video = document.getElementById('video'), vendorUrl=window.URL || window.webkitURL;
+  navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  //capture video
+  navigator.getMedia({
+  video: true, 
+  audio:false
+  },  function(stream) {
+  video.src = vendorUrl.createObjectURL(stream);
+    vedio.play();
+},
+ function(error){
+  });
+})();
